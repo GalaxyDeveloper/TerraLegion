@@ -37,7 +37,7 @@ When adding your own features to the game or modifying existing code, there are 
 
 ### Installation & Building
 1. Clone the code from github
-2. Run `gradlew eclipse` to generate eclipse project.
+2. Open CMD line and cd to your folder. Then run `gradlew eclipse` to generate eclipse project.
 3. Using Eclipse neon, create a new workspace.
 3. From *File* menu, select *Import->General->Existing Exlipse Project*. Browser to the folder where you cloned the code. Import all projects.
 4. Select the *Run Configuration* menu from *Run* menu.
