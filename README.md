@@ -1,4 +1,4 @@
-# TerraLegion 
+# TerraLegion
 
 A clone of the popular game, Terraria, developed using Java and the LibGDX framework. The reason that this project is open-source is to encourage community contributions and create a game centered around the development done by those in the gaming community. Contributions are heavily welcomed and I would love to see developers being able to place their own mark on the game. The name "TerraLegion" was heavily influenced by the idea of community contributions. "Terra" making a reference to "Terraria", the inspiration of this game, and "Legion" referring to the army of developers behind it.
 
@@ -7,7 +7,7 @@ A clone of the popular game, Terraria, developed using Java and the LibGDX frame
 ### Contributing
 When adding your own features to the game or modifying existing code, there are a few things to keep in mind to ensure that your pull requests are accepted. Before submitting new additions, be sure to reference the list below as it may be modified in the future.
 
-1. Because the game is aimed at being developed for mobile devices, the processing and graphical power that we're able to work with is very small when put in comparison with desktop computers and laptops. A game that runs at 60 FPS on a desktop computer may only run at 20 FPS on a mobile device depending on the optimization techniques applied. Before pushing new code to the repository, be sure to test your version of the game on an Android device to ensure that it runs smoothly. If you don't have an Android device to test it on, use an application like [Genymotion](https://www.genymotion.com/) which provides emulators of Android devices. 
+1. Because the game is aimed at being developed for mobile devices, the processing and graphical power that we're able to work with is very small when put in comparison with desktop computers and laptops. A game that runs at 60 FPS on a desktop computer may only run at 20 FPS on a mobile device depending on the optimization techniques applied. Before pushing new code to the repository, be sure to test your version of the game on an Android device to ensure that it runs smoothly. If you don't have an Android device to test it on, use an application like [Genymotion](https://www.genymotion.com/) which provides emulators of Android devices.
 2. Following proper coding standards is a must. Be sure to follow object-oriented design standards, implement design patterns when able to, and document all code following documentation standards for Java.  
 3. If your additions add a new utility or module to the game, be sure to add a separate testing application to the "test" package of the code. This application should simply provide test cases, showing the functions of your new additions. For example, you can find the [InventoryTest Application](https://github.com/baseball435/Terraria-Clone/blob/master/core/src/com/jmrapp/terralegion/test/InventoryTest.java) which simply tests different methods of the inventory class. You can also find the [Noise Visualization Utility](https://github.com/baseball435/Terraria-Clone/blob/master/core/src/com/jmrapp/terralegion/test/NoiseVisualizationScreen.java) which allows you to test and visualize the outcomes of Simplex Noise.  
 
@@ -26,21 +26,25 @@ When adding your own features to the game or modifying existing code, there are 
 
 - **Issues:** Working on [opened issues](https://github.com/jmrapp1/TerraLegion/issues) is the first thing I'd recommend trying out before going on to add your own content. It will give you a bit of a feel for the code and make adding content a little bit smoother later on.
 - **Inventory Block:** In Minecraft and Terraria having a place to put your items is very important. We will need to create a new Block type called an *InventoryBlock*. This should be an abstract class that extends the *Block* class. It should contain an *Inventory* instance and provide getter/setter methods for it. From this other classes should extend upon it. For example, a *Chest* class can be created that extends the *InventoryBlock* and allows interaction by tapping on it (for now). When it is tapped on, it should open the *InventoryScreen* and display the contents of the inventory. At some point an extension of the *InventoryScreen* class will need to be made to show the Player's inventory along with the inventory of the chest.
-- **Graphics:** If you consider yourself to be a good graphic artist, the game is in dire need of new graphics. New images for tiles, characters, entities, etc. need to be created and I would love to see any work that you have. At some point animations will also need to be added to the game. These will most likely work using sprite strips, but that is not set in stone. 
+- **Graphics:** If you consider yourself to be a good graphic artist, the game is in dire need of new graphics. New images for tiles, characters, entities, etc. need to be created and I would love to see any work that you have. At some point animations will also need to be added to the game. These will most likely work using sprite strips, but that is not set in stone.
 - **Chunk Size Change:** Use a chunk size that is a power of two (such as 64) and not 50. This would allow you to use bitshifts and masks to determine block positions rather than using division and multiplication. If you do not care for limiting your game world then the upper bits of an integer would be the chunk position, the next lower bits would be the tile position in the chunk, and the remaining bits could be sub-tile position but this would not be required unless you want uniform object space coordinates and world space coordinates. *Suggested by [mpasteven](https://www.reddit.com/user/mpasteven)*
 - **Separate Rendering From Logic:** Split the rendering logic from the game code and instead have it in its own. This way in the event we need to rework or add additions to the game logic or the render logic we do not need to decouple the code to change it. You could place the renderer code in a `renderer` package potentially. *Suggested by [mpasteven](https://www.reddit.com/user/mpasteven)*
 
+### Tools and IDE
+- **Eclipse Neon**
+- **Paint.NET**
+- **Gradle**
+
 ### Installation & Building
-1. Fork the repository and create your own branch.
-2. Using Android Studio, open an existing project and navigate to the directory where your branch is stored. Select build.gradle and open the project from that file.
-3. From the top menu, select *Run->Edit Configurations*. We need to add a new run configuration to allow you to run the game on your desktop/laptop.
-4. Select the *+* button and then choose *Application* from the drop down menu.
-5. Enter a name for the configuration at the top. 
+1. Clone the code from github
+2. Run `gradlew eclipse` to generate eclipse project.
+3. Using Eclipse neon, create a new workspace.
+3. From *File* menu, select *Import->General->Existing Exlipse Project*. Browser to the folder where you cloned the code. Import all projects.
+4. Select the *Run Configuration* menu from *Run* menu.
+5. Enter a name for the configuration at the top.
 6. For the *Main Class* setting, press the browse button and select the *DesktopLauncher* class.
 7. For the *Working Directory* setting, press the browse button and navigate to and select the directory *<your branch>/android/assets/*
-8. For the *Use Classpath of Module* setting, select the *desktop* project from the drop down menu.
-9. Apply the changes and press *OK*. 
-10. You should now be able to run the game from Desktop and Android using the two run configurations.
+8. Apply the changes and press *OK*.
 
 ### Gallery (Artwork done by [Kenney](http://kenney.nl/))
 **Video:**
