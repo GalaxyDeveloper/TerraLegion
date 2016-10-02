@@ -34,7 +34,6 @@ import com.jmrapp.terralegion.game.views.ui.ItemBox;
 import com.jmrapp.terralegion.game.utils.CachePool;
 import com.jmrapp.terralegion.game.world.World;
 
-
 /**
  * Created by Jon on 10/8/15.
  */
@@ -43,16 +42,26 @@ public class CraftingScreen implements Screen {
 	private static final int MAX_TABLE_WIDTH = 5;
 
 	private static final Texture bg = ResourceManager.getInstance().getTexture("craftingBg");
-	private static final TextureRegionDrawable inventoryBoxDrawable = new TextureRegionDrawable(new TextureRegion(ResourceManager.getInstance().getTexture("inventoryBox")));
-	private static final TextureRegionDrawable inventorySelectedBoxDrawable = new TextureRegionDrawable(new TextureRegion(ResourceManager.getInstance().getTexture("selectedInventoryBox")));
+	private static final TextureRegionDrawable inventoryBoxDrawable = new TextureRegionDrawable(
+			new TextureRegion(ResourceManager.getInstance().getTexture("inventoryBox")));
+	private static final TextureRegionDrawable inventorySelectedBoxDrawable = new TextureRegionDrawable(
+			new TextureRegion(ResourceManager.getInstance().getTexture("selectedInventoryBox")));
 
-	private CategoryButton toolCategoryBtn = new CategoryButton(ItemCategory.TOOL, ResourceManager.getInstance().getTexture("unselectedToolCategoryBtn"), ResourceManager.getInstance().getTexture("selectedToolCategoryBtn"), 30, Settings.getHeight() - 120);
-	private CategoryButton furnitureCategoryBtn = new CategoryButton(ItemCategory.FURNITURE, ResourceManager.getInstance().getTexture("unselectedToolCategoryBtn"), ResourceManager.getInstance().getTexture("selectedToolCategoryBtn"), 30, Settings.getHeight() - 170);
+	private CategoryButton toolCategoryBtn = new CategoryButton(ItemCategory.TOOL,
+			ResourceManager.getInstance().getTexture("unselectedToolCategoryBtn"),
+			ResourceManager.getInstance().getTexture("selectedToolCategoryBtn"), 30, Settings.getHeight() - 120);
+	private CategoryButton furnitureCategoryBtn = new CategoryButton(ItemCategory.FURNITURE,
+			ResourceManager.getInstance().getTexture("unselectedToolCategoryBtn"),
+			ResourceManager.getInstance().getTexture("selectedToolCategoryBtn"), 30, Settings.getHeight() - 170);
+	private CategoryButton miscCategoryBtn = new CategoryButton(ItemCategory.MISC,
+			ResourceManager.getInstance().getTexture("unselectedToolCategoryBtn"),
+			ResourceManager.getInstance().getTexture("selectedToolCategoryBtn"), 30, Settings.getHeight() - 220);
 
 	private static final Array<Table> usedTablesCache = new Array<Table>();
 	private static final Array<Group> usedGroupsCache = new Array<Group>();
 
-	private static final Array<InventoryDragListener> dragListenersCache = new Array<InventoryDragListener>(InventoryDragListener.class);
+	private static final Array<InventoryDragListener> dragListenersCache = new Array<InventoryDragListener>(
+			InventoryDragListener.class);
 	private static final Array<InventoryDragListener> usedDragListenersCache = new Array<InventoryDragListener>();
 
 	private Stage stage;
@@ -72,10 +81,15 @@ public class CraftingScreen implements Screen {
 	private ItemCategory currentCategory;
 	private CraftingRecipe selectedRecipe;
 
-	private PictureButton cancelBtn = new PictureButton(ResourceManager.getInstance().getDrawable("cancelBtn"), Settings.getWidth() - ResourceManager.getInstance().getDrawable("cancelBtn").getWidth() - 15, Settings.getHeight() - 61 + 10);
-	private PictureButton craftingBtn = new PictureButton(ResourceManager.getInstance().getDrawable("selectedCraftingBtn"), 30, Settings.getHeight() - 61 + 10);
-	private PictureButton invBtn = new PictureButton(ResourceManager.getInstance().getDrawable("unselectedInvBtn"), (Settings.getWidth() / 2) - 25, Settings.getHeight() - 61 + 10);
-	private PictureButton craftBtn = new PictureButton(ResourceManager.getInstance().getDrawable("craftBtn"), Settings.getWidth() - 200, 25);
+	private PictureButton cancelBtn = new PictureButton(ResourceManager.getInstance().getDrawable("cancelBtn"),
+			Settings.getWidth() - ResourceManager.getInstance().getDrawable("cancelBtn").getWidth() - 15,
+			Settings.getHeight() - 61 + 10);
+	private PictureButton craftingBtn = new PictureButton(
+			ResourceManager.getInstance().getDrawable("selectedCraftingBtn"), 30, Settings.getHeight() - 61 + 10);
+	private PictureButton invBtn = new PictureButton(ResourceManager.getInstance().getDrawable("unselectedInvBtn"),
+			(Settings.getWidth() / 2) - 25, Settings.getHeight() - 61 + 10);
+	private PictureButton craftBtn = new PictureButton(ResourceManager.getInstance().getDrawable("craftBtn"),
+			Settings.getWidth() - 200, 25);
 
 	public CraftingScreen(Screen gameScreen, World world, Inventory inventory) {
 		this.gameScreen = gameScreen;
@@ -91,14 +105,17 @@ public class CraftingScreen implements Screen {
 		stageSb = new SpriteBatch();
 		stage = new Stage(new StretchViewport(Settings.getWidth(), Settings.getHeight()), stageSb);
 
-		//CATEGORY BUTTONS
+		// CATEGORY BUTTONS
 		stage.addActor(toolCategoryBtn.getImageButton());
 		stage.addActor(furnitureCategoryBtn.getImageButton());
+		stage.addActor(miscCategoryBtn.getImageButton());
 
 		ScrollPane.ScrollPaneStyle paneStyle = new ScrollPane.ScrollPaneStyle();
-		paneStyle.background = new TextureRegionDrawable(new TextureRegion(ResourceManager.getInstance().getTexture("invStageBg")));
-		//paneStyle.vScrollKnob = new TextureRegionDrawable();
-		//paneStyle.hScroll = paneStyle.hScrollKnob = paneStyle.vScroll = paneStyle.vScrollKnob;
+		paneStyle.background = new TextureRegionDrawable(
+				new TextureRegion(ResourceManager.getInstance().getTexture("invStageBg")));
+		// paneStyle.vScrollKnob = new TextureRegionDrawable();
+		// paneStyle.hScroll = paneStyle.hScrollKnob = paneStyle.vScroll =
+		// paneStyle.vScrollKnob;
 
 		Table craftingContainer = CachePool.getTable();
 		usedTablesCache.add(craftingContainer);
@@ -106,7 +123,8 @@ public class CraftingScreen implements Screen {
 		craftingContainer.setBounds(startX, 0, 370, Settings.getHeight() - 61);
 
 		craftingTable = CachePool.getTable();
-		stage.addListener(new CraftingButtonClickListener(stage, craftingTable, craftingContainer.getX(), craftingContainer.getY()));
+		stage.addListener(new CraftingButtonClickListener(stage, craftingTable, craftingContainer.getX(),
+				craftingContainer.getY()));
 		usedTablesCache.add(craftingTable);
 
 		pane = new ScrollPane(craftingTable, paneStyle);
@@ -114,8 +132,10 @@ public class CraftingScreen implements Screen {
 		craftingContainer.row();
 		stage.addActor(craftingContainer);
 
-		itemNameLabel = new Label("", ResourceManager.getInstance().getFont("font"), startX + 370 + 10, Settings.getHeight() - 61 - 35, false);
-		itemInfoLabel = new MultilineLabel("", ResourceManager.getInstance().getFont("font"), startX + 370 + 10, Settings.getHeight() - 61 - 85, false);
+		itemNameLabel = new Label("", ResourceManager.getInstance().getFont("font"), startX + 370 + 10,
+				Settings.getHeight() - 61 - 35, false);
+		itemInfoLabel = new MultilineLabel("", ResourceManager.getInstance().getFont("font"), startX + 370 + 10,
+				Settings.getHeight() - 61 - 85, false);
 
 		populateCraftableItems(toolCategoryBtn.getCategory());
 
@@ -136,9 +156,12 @@ public class CraftingScreen implements Screen {
 				ScreenManager.setScreen(new InventoryScreen(gameScreen, world, inventory));
 			} else if (selectedRecipe != null && craftBtn.isPressed(touchX, touchY)) {
 				// check if user can craft the selected item/block
-				if(selectedRecipe.canCraft(inventory)) {
+				if (selectedRecipe.canCraft(inventory)) {
 					// give the player the crafted item/block
-					inventory.addItemStack(selectedRecipe.craft(inventory)); // also removes required items
+					inventory.addItemStack(selectedRecipe.craft(inventory)); // also
+																				// removes
+																				// required
+																				// items
 					updateSelectedRecipeInfo();
 				}
 			}
@@ -167,7 +190,11 @@ public class CraftingScreen implements Screen {
 		InputController.getInstance().removeInputProcessor(stage);
 		stage.dispose();
 
-		for (int i = 0; i < usedTablesCache.size; i++) { //Manage the tables so we don't over use them each time we open the inventory screen
+		for (int i = 0; i < usedTablesCache.size; i++) { // Manage the tables so
+															// we don't over use
+															// them each time we
+															// open the
+															// inventory screen
 			CachePool.addTable(usedTablesCache.get(i));
 		}
 		usedTablesCache.clear();
@@ -235,7 +262,8 @@ public class CraftingScreen implements Screen {
 			itemNameLabel.setText(itemStack.getItem().getName());
 			String text = "";
 			for (ItemStack stack : selectedRecipe.getRequiredItems()) {
-				text += stack.getItem().getName() + "(" + inventory.getTotalCount(stack.getItem()) + "/" + stack.getStack() + ")\n";
+				text += stack.getItem().getName() + "(" + inventory.getTotalCount(stack.getItem()) + "/"
+						+ stack.getStack() + ")\n";
 			}
 			itemInfoLabel.setText(text);
 		}
@@ -265,13 +293,19 @@ public class CraftingScreen implements Screen {
 					float boxWidth = btn.getWidth();
 					float boxHeight = btn.getHeight();
 
-					if (xClick >= boxX && xClick <= boxX + boxWidth && yClick >= boxY && yClick <= boxY + boxHeight) { //dropped on itembox
+					if (xClick >= boxX && xClick <= boxX + boxWidth && yClick >= boxY && yClick <= boxY + boxHeight) { // dropped
+																														// on
+																														// itembox
 						String[] split = actor.getName().split(" ");
-						if (split[0].equals("category")) { //It's a category button so switch categories
+						if (split[0].equals("category")) { // It's a category
+															// button so switch
+															// categories
 							if (btn == toolCategoryBtn.getImageButton()) {
 								populateCraftableItems(toolCategoryBtn.getCategory());
 							} else if (btn == furnitureCategoryBtn.getImageButton()) {
 								populateCraftableItems(furnitureCategoryBtn.getCategory());
+							} else if (btn == miscCategoryBtn.getImageButton()) {
+								populateCraftableItems(miscCategoryBtn.getCategory());
 							}
 							return;
 						}
@@ -288,7 +322,9 @@ public class CraftingScreen implements Screen {
 						float boxWidth = box.getWidth();
 						float boxHeight = box.getHeight();
 
-						if (xClick >= boxX && xClick <= boxX + boxWidth && yClick >= boxY && yClick <= boxY + boxHeight) { //dropped on itembox
+						if (xClick >= boxX && xClick <= boxX + boxWidth && yClick >= boxY
+								&& yClick <= boxY + boxHeight) { // dropped on
+																	// itembox
 							box.setSelected(true);
 
 							if (selectedInventoryBox != null) {
@@ -296,8 +332,9 @@ public class CraftingScreen implements Screen {
 							}
 							selectedInventoryBox = box;
 
-							//selected a craftable item
-							Array<CraftingRecipe> recipes = CraftingRecipes.getInstance().getCraftableItems(currentCategory);
+							// selected a craftable item
+							Array<CraftingRecipe> recipes = CraftingRecipes.getInstance()
+									.getCraftableItems(currentCategory);
 							int index = Integer.parseInt(box.getExtra());
 							selectedRecipe = recipes.get(index);
 							updateSelectedRecipeInfo();
@@ -345,4 +382,3 @@ public class CraftingScreen implements Screen {
 	}
 
 }
-
