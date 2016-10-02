@@ -31,7 +31,7 @@ public class ItemManager {
 		items.put(ItemType.WOODEN_PICKAXE.getId(), new PickaxeItem(ItemType.WOODEN_PICKAXE, "Wooden Pickaxe", ResourceManager.getInstance().getDrawable("woodenPickaxe"), 1, 4, 1.0f, 100, .5f));
 		//items.put(BlockType.WOOD.getId(), new Item(ItemType.STICK.getId(), ItemCategory.MISC, "Stick", ResourceManager.getInstance().getDrawable("stick"), 64));
 		items.put(BlockType.LEAVES.getId(), new BlockItem(BlockType.LEAVES, ItemCategory.BLOCK, "Leaves", ResourceManager.getInstance().getDrawable("leaves"), 64));
-		items.put(ItemType.SWORD.getId(), new SwordItem(ItemType.SWORD, "Fiery Sword", ResourceManager.getInstance().getDrawable("sword"), 1, 6, 1.0f, 50, 100.0f));
+		items.put(ItemType.SWORD.getId(), new SwordItem(ItemType.SWORD, "Wooden Sword", ResourceManager.getInstance().getDrawable("sword"), 1, 6, 1.0f, 50, 100.0f));
 		items.put(ItemType.STICK.getId(), new Item(ItemType.STICK.getId(), ItemCategory.MISC, "Stick", ResourceManager.getInstance().getDrawable("stick"), 64));
 		items.put(ItemType.WOODEN_LOG.getId(), new Item(ItemType.WOODEN_LOG.getId(), ItemCategory.MISC, "Oak Log", ResourceManager.getInstance().getDrawable("woodLog"), 64));
 		items.put(BlockType.WOOD_CHEST.getId(), new BlockItem(BlockType.WOOD_CHEST, ItemCategory.BLOCK, "Wooden Chest", ResourceManager.getInstance().getDrawable("chest"), 64));
@@ -42,7 +42,7 @@ public class ItemManager {
 		items.put(BlockType.MUSHROOM.getId(), new BlockItem(BlockType.MUSHROOM, ItemCategory.MISC, "Mushroom", ResourceManager.getInstance().getDrawable("mushroom2"), 64));
 		items.put(ItemType.FISH.getId(), new FishItem(ItemType.FISH.getId(), ItemType.FISH_COOKED.getId(), ItemCategory.FOOD, "Fish", ResourceManager.getInstance().getDrawable("fish"), 64, 1, 128));
 		items.put(ItemType.FISH_COOKED.getId(), new Item(ItemType.FISH_COOKED.getId(), ItemCategory.FOOD, "Fish", ResourceManager.getInstance().getDrawable("fish_cooked"), 64));
-		items.put(BlockType.STOVE.getId(), new BlockItem(BlockType.STOVE, ItemCategory.MISC, "Stove", ResourceManager.getInstance().getDrawable("stove"), 64));
+		items.put(BlockType.STOVE.getId(), new BlockItem(BlockType.STOVE, ItemCategory.MISC, "Furnace", ResourceManager.getInstance().getDrawable("stove"), 64));
 		items.put(BlockType.SAND.getId(), new CookableItem(BlockType.SAND.getId(), BlockType.GLASS.getId(), ItemCategory.BLOCK, "Sand", ResourceManager.getInstance().getDrawable("sand"), 64, 1f, 128f));
 		items.put(BlockType.CACTUS.getId(), new CookableItem(BlockType.CACTUS.getId(), BlockType.CACTUS_WALL.getId(), ItemCategory.BLOCK, "Cactus", ResourceManager.getInstance().getDrawable("cactus"), 64, 1, 128));
 		items.put(BlockType.GLASS.getId(), new BlockItem(BlockType.GLASS, ItemCategory.BLOCK, "Glass", ResourceManager.getInstance().getDrawable("glass"), 64));
