@@ -110,12 +110,13 @@ public class PhysicsGame implements ApplicationListener {
         ResourceManager.getInstance().loadAtlasRegionDrawable("coalDrop", atlas, "coalDrop");
         ResourceManager.getInstance().loadAtlasRegionDrawable("leavesDrop", atlas, "leavesDrop");
         ResourceManager.getInstance().loadAtlasRegionDrawable("woodDrop", atlas, "woodDrop");
-        ResourceManager.getInstance().loadAtlasRegionDrawable("stickDrop", atlas, "stickDrop");
+        ResourceManager.getInstance().loadAtlasRegionDrawable("logDrop", atlas, "logDrop");
 
         //ITEMS
         ResourceManager.getInstance().loadTexturedDrawable("woodenPickaxe", "items/woodenPickaxe.png");
         ResourceManager.getInstance().loadTexturedDrawable("sword", "items/sword.png");
         ResourceManager.getInstance().loadTexturedDrawable("stick", "items/stick.png");
+        ResourceManager.getInstance().loadTexturedDrawable("woodLog", "items/woodLog.png");
         ResourceManager.getInstance().loadTexturedDrawable("seed", "items/seed.png");
         ResourceManager.getInstance().loadTexturedDrawable("fish", "items/fish.png");
         ResourceManager.getInstance().loadTexturedDrawable("fish_cooked", "items/fish_cooked.png");

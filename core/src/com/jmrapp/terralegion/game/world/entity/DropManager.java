@@ -22,11 +22,12 @@ public class DropManager {
         drops.put(BlockType.TORCH.getId(), new Drop(ItemManager.getInstance().getItem(BlockType.TORCH), ResourceManager.getInstance().getDrawable("torchDrop")));
         drops.put(BlockType.DIAMOND.getId(), new Drop(ItemManager.getInstance().getItem(BlockType.DIAMOND), ResourceManager.getInstance().getDrawable("diamondDrop")));
         drops.put(BlockType.COAL.getId(), new Drop(ItemManager.getInstance().getItem(BlockType.COAL), ResourceManager.getInstance().getDrawable("coalDrop")));
-        drops.put(BlockType.WOOD.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.STICK), ResourceManager.getInstance().getDrawable("stickDrop")));
+//        drops.put(BlockType.WOOD.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.STICK), ResourceManager.getInstance().getDrawable("stickDrop")));
+        drops.put(BlockType.WOOD.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.WOODEN_LOG), ResourceManager.getInstance().getDrawable("logDrop")));
         drops.put(BlockType.LEAVES.getId(), new Drop(ItemManager.getInstance().getItem(BlockType.LEAVES), ResourceManager.getInstance().getDrawable("leavesDrop")));
         drops.put(ItemType.WOODEN_PICKAXE.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.WOODEN_PICKAXE), ResourceManager.getInstance().getDrawable("woodenPickaxe")));
         drops.put(ItemType.SWORD.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.SWORD), ResourceManager.getInstance().getDrawable("sword")));
-        drops.put(ItemType.STICK.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.STICK), ResourceManager.getInstance().getDrawable("stickDrop")));
+//        drops.put(ItemType.STICK.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.STICK), ResourceManager.getInstance().getDrawable("stickDrop")));
         drops.put(BlockType.COVER_GRASS.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.SEED), ResourceManager.getInstance().getDrawable("seed")));
         drops.put(BlockType.CROP_BLOCK_0.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.SEED), ResourceManager.getInstance().getDrawable("seed")));
         drops.put(BlockType.CROP_BLOCK_1.getId(), new Drop(ItemManager.getInstance().getItem(ItemType.SEED), ResourceManager.getInstance().getDrawable("seed")));

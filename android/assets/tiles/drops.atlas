@@ -60,7 +60,7 @@ woodDrop
   orig: 16, 16
   offset: 0, 0
   index: -1
-stickDrop
+logDrop
   rotate: false
   xy: 128, 0
   size: 16, 16
