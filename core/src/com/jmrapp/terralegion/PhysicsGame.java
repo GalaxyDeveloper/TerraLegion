@@ -114,7 +114,7 @@ public class PhysicsGame implements ApplicationListener {
 
         //ITEMS
         ResourceManager.getInstance().loadTexturedDrawable("woodenPickaxe", "items/woodenPickaxe.png");
-        ResourceManager.getInstance().loadTexturedDrawable("sword", "items/sword.png");
+        ResourceManager.getInstance().loadTexturedDrawable("woodSword", "items/woodSword.png");
         ResourceManager.getInstance().loadTexturedDrawable("stick", "items/stick.png");
         ResourceManager.getInstance().loadTexturedDrawable("woodLog", "items/woodLog.png");
         ResourceManager.getInstance().loadTexturedDrawable("seed", "items/seed.png");
